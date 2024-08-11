@@ -39,6 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+EXTERNAL_APPS = [
+    'scrapper',
+]
+
+INSTALLED_APPS = INSTALLED_APPS + EXTERNAL_APPS
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -75,8 +81,12 @@ WSGI_APPLICATION = 'web.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'scrapper',
+        'USER': 'postgres',
+        'PASSWORD': 'Deepak@15', 
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
