@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 ]
 
 EXTERNAL_APPS = [
-    'scrapper',
+    'scrapping',
 ]
 
 INSTALLED_APPS = INSTALLED_APPS + EXTERNAL_APPS
