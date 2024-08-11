@@ -10,7 +10,7 @@ def scrap_imdb_news():
     }
     
     response = requests.get(url)
-    print(response)
+    print(response.text)
 
 scrap_imdb_news()
 
