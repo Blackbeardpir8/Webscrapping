@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from scrapping.models import News
 
 def scrap_imdb_news():
     url = "https://www.imdb.com/news/movie/"
@@ -9,7 +10,7 @@ def scrap_imdb_news():
 
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.text, 'html.parser')
-    articles = []
+
     news_items = soup.find_all('div', class_='ipc-list-card--border-line')
 
     for item in news_items:
@@ -28,14 +29,13 @@ def scrap_imdb_news():
         
         external_link = title_element['href'] if title_element else "No Link"
 
-        articles.append({
+        news = {
             'title': title,
             'description': description,
             'image': image,
             'external_link': external_link,
-        })
+        }
 
-    # Print the first article to verify
-    print(articles[0])
+        News.objects.create(**news)
 
-scrap_imdb_news()
+
